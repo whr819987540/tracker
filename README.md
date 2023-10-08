@@ -30,6 +30,18 @@ docker run -d -p 6379:6379 --name redis redis:alpine3.18
 docker exec -it redis redis-cli
 ```
 
+To make peers able to get peer info, you need to open these ports by the following commands.
+
+```bash
+# tracker metrics http 6880 port
+# BitTorrent http 6969 announce port
+# BitTorrent udp 6969 announce port
+# for Alibaba Cloud ECS, you need to add these ports/ to the security group as well
+sudo iptables -I INPUT -p tcp --dport 6880 -j ACCEPT
+sudo iptables -I INPUT -p tcp --dport 6969 -j ACCEPT
+sudo iptables -I INPUT -p udp --dport 6969 -j ACCEPT
+```
+
 After the configuration, run the tracker。
 
 ```bash
