@@ -55,3 +55,4 @@ nohup ./tracker --config ./config.yaml >> tracker.log --debug 2>&1 &
 nohup ./tracker --config ./config.yaml >> tracker.log 2>&1 &
 ```
 
+To test whether the tracker is accessible, curl http://{ip}:6880/metrics from another machine.
